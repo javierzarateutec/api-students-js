@@ -6,8 +6,8 @@ const app = express();
 const PORT = 8000;
 
 // Middleware para parsear datos de formularios
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json()); // ✅ Para datos en formato JSON
+app.use(express.urlencoded({ extended: true })); // ✅ Para x-www-form-urlencoded
 
 // Crear conexión a la base de datos
 const db = new sqlite3.Database("students.sqlite", (err) => {
